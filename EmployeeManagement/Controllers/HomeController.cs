@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement
 {
@@ -9,9 +10,12 @@ namespace EmployeeManagement
     {
         private IEmployeeRepository _employeeRepository;
         private IWebHostEnvironment _iHostingEnvironment;
+        private ILogger logger;
 
-        public HomeController(IEmployeeRepository employeeRepository,IWebHostEnvironment iHostingEnvironment)
+        public HomeController(IEmployeeRepository employeeRepository,IWebHostEnvironment iHostingEnvironment,
+                                ILogger<HomeController> _logger)
         {
+             logger=_logger;
             _employeeRepository = employeeRepository;
             _iHostingEnvironment = iHostingEnvironment;
         }
@@ -24,7 +28,14 @@ namespace EmployeeManagement
 
         public ViewResult Details(int? id)
         {
-            throw new Exception("Exeption from details");
+            //throw new Exception("Exeption from details");
+            logger.LogTrace("Trace log");
+            logger.LogDebug("Debug log");
+            logger.LogInformation("Information log");
+            logger.LogWarning("Warning log");
+            logger.LogError("Error log");
+            logger.LogCritical("Critial log");
+
             Employee employee = _employeeRepository.GetEmployee(id ?? 1);
 
             if(employee==null){

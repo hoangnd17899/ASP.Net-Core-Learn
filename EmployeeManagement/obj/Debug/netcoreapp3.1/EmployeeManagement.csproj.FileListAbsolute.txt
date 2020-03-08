@@ -60,3 +60,7 @@
 /home/hoangnd/source/netcore/netcoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Home/EmployeeNotFound.cshtml.g.cs
 /home/hoangnd/source/netcore/netcoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Shared/NotFound.cshtml.g.cs
 /home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/nlog.config
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/NLog.dll
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/NLog.Extensions.Logging.dll
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/NLog.Web.AspNetCore.dll

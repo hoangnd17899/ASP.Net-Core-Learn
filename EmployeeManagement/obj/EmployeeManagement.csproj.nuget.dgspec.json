@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {}
+    "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {}
   },
   "projects": {
-    "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {
+    "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
+        "projectUniqueName": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
         "projectName": "EmployeeManagement",
-        "projectPath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
+        "projectPath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
         "packagesPath": "/home/hoangnd/.nuget/packages/",
-        "outputPath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/obj/",
+        "outputPath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/hoangnd/.nuget/NuGet/NuGet.Config"
@@ -41,6 +41,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "NLog.Web.AspNetCore": {
+              "target": "Package",
+              "version": "[4.9.0, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",

@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
+  "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,53 +20521,53 @@
   "RootNamespace": "EmployeeManagement",
   "Documents": [
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Home/Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/Create.cshtml",
+      "TargetPath": "Views\\Home\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Home/Edit.cshtml",
-      "TargetPath": "Views\\Home\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Home/EmployeeNotFound.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/EmployeeNotFound.cshtml",
       "TargetPath": "Views\\Home\\EmployeeNotFound.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Home/Details.cshtml",
-      "TargetPath": "Views\\Home\\Details.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Shared/_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Shared/Error.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Shared/NotFound.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Shared/NotFound.cshtml",
       "TargetPath": "Views\\Shared\\NotFound.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/hoangnd/source/netcore/NetCoreLearn/EmployeeManagement/Views/Home/Create.cshtml",
-      "TargetPath": "Views\\Home\\Create.cshtml",
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/Details.cshtml",
+      "TargetPath": "Views\\Home\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/Edit.cshtml",
+      "TargetPath": "Views\\Home\\Edit.cshtml",
       "FileKind": "mvc"
     }
   ],

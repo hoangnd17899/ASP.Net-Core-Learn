@@ -1,20 +1,30 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement
 {
     public class SQLEmployeeRepository : IEmployeeRepository
     {
         private readonly AppDBContext context;
+        private readonly ILogger logger;
 
-        public SQLEmployeeRepository(AppDBContext _context)
+        public SQLEmployeeRepository(AppDBContext _context,ILogger<SQLEmployeeRepository> _logger)
         {
+            logger=_logger;
             context = _context;
         }
 
         public Employee GetEmployee(int Id)
         {
+            logger.LogTrace("Trace log");
+            logger.LogDebug("Debug log");
+            logger.LogInformation("Information log");
+            logger.LogWarning("Warning log");
+            logger.LogError("Error log");
+            logger.LogCritical("Critial log");
+
             return context.Employees.FirstOrDefault(e => e.Id == Id);
         }
 
