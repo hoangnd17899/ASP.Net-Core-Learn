@@ -40,8 +40,10 @@ namespace EmployeeManagement
                 // app.UseDeveloperExceptionPage();
 
                 // Trả về trang lỗi custom
+                // Bắt lỗi cụ thể
                 app.UseExceptionHandler("/Error");
-                //app.UseStatusCodePagesWithRedirects("/Error/{0}");
+                // Bắt lỗi theo status code
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {
