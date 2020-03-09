@@ -2,12 +2,15 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagement
 {
     public class AccountController:Controller
     {
+        // Quản lý các phương thức với tài khoản(CRUD)
         private readonly UserManager<IdentityUser> userManager;
+        // Quản lý đăng nhập
         private readonly SignInManager<IdentityUser> signInManager;
 
         public AccountController(UserManager<IdentityUser> _userManager,SignInManager<IdentityUser> _signInManager)
@@ -16,20 +19,27 @@ namespace EmployeeManagement
             signInManager=_signInManager; 
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register(){
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel model){
             if(ModelState.IsValid){
+                // Tạo đối tượng Identity User
                 var user=new IdentityUser(){
                     Email=model.Email,
                     UserName=model.Email
                 };
+
+                // Thêm mới IdentityUser
                 var result= await userManager.CreateAsync(user,model.Password);
 
+                // Kiểm tra thêm mới thành công
                 if(result.Succeeded){
+                    // Đăng nhập cho tài khoản vừa đăng ký
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index","Home");
                 }
@@ -49,16 +59,27 @@ namespace EmployeeManagement
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login(){
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model){
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model,string returnUrl){
             if(ModelState.IsValid){
+                // Đăng nhập
+                // isPersistent để thực hiện lưu thông tin đăng nhập persistent cookie
                 var result= await signInManager.PasswordSignInAsync(model.Email,model.Password,model.RememberMe,false);
 
                 if(result.Succeeded){
+                    // Kiểm tra xem có returnUrl không để khi login thành công chạy vào url ấy 
+                    // Kiểm tra xem có phải url cục bộ không, đề phòng hacker tấn công bằng việc thay đổi returnUrl trong
+                    // Query String         
+                    if(!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl)){
+                        return Redirect(returnUrl);
+                    }
+                    // Nếu không có returnUrl mặc định về trang home sau khi đã đăng nhập
                     return RedirectToAction("Index","Home");
                 }
 

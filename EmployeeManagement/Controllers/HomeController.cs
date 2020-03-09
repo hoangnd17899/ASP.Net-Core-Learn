@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManagement
 {
+    
     public class HomeController : Controller
     {
         private IEmployeeRepository _employeeRepository;
@@ -20,12 +22,14 @@ namespace EmployeeManagement
             _iHostingEnvironment = iHostingEnvironment;
         }
 
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var model = _employeeRepository.GetAllEmployee();
             return View(model);
         }
 
+        [AllowAnonymous]
         public ViewResult Details(int? id)
         {
             //throw new Exception("Exeption from details");
@@ -50,6 +54,7 @@ namespace EmployeeManagement
             return View(homeDetailViewModel);
         }
 
+        [HttpGet]
         public ViewResult Create()
         {
             return View();
@@ -76,6 +81,7 @@ namespace EmployeeManagement
             return View();
         }
 
+        [HttpGet]
         public ViewResult Edit(int id)
         {
             Employee model = _employeeRepository.GetEmployee(id);
