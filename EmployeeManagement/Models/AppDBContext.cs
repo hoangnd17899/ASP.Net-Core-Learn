@@ -1,9 +1,10 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EmployeeManagement
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext
     {
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
@@ -13,6 +14,9 @@ namespace EmployeeManagement
         public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Employee>().HasData(
                 new Employee{
                     Id=1,

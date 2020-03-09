@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace EmployeeManagement
 {
@@ -25,6 +25,9 @@ namespace EmployeeManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
+
+            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
+
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddDbContext<AppDBContext>(
                 optionsAction => optionsAction.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
@@ -53,6 +56,9 @@ namespace EmployeeManagement
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+
             app.UseMvcWithDefaultRoute();
         }
     }
