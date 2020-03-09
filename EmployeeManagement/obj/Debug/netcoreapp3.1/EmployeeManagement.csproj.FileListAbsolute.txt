@@ -148,3 +148,5 @@
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/bin/Debug/netcoreapp3.1/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/EmployeeManagement.MvcApplicationPartsAssemblyInfo.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/Login.cshtml.g.cs

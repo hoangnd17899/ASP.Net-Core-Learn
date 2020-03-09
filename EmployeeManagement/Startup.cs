@@ -26,7 +26,18 @@ namespace EmployeeManagement
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
-            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
+            services.AddIdentity<IdentityUser,IdentityRole>(options=>{
+                options.Password.RequiredLength=10;
+                options.Password.RequireUppercase=false;
+                options.Password.RequireNonAlphanumeric=false;
+            }).AddEntityFrameworkStores<AppDBContext>();
+
+            // Thay đổi validation required cho IdentityUser
+            // services.Configure<IdentityOptions>(options=>{
+            //     options.Password.RequiredLength=10;
+            //     options.Password.RequireUppercase=false;
+            //     options.Password.RequireNonAlphanumeric=false;
+            // });
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddDbContext<AppDBContext>(
