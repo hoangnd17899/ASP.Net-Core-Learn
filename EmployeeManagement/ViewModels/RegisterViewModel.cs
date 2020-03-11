@@ -1,10 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+
 namespace EmployeeManagement
 {
     public class RegisterViewModel
     {
         [Required]
         [EmailAddress]
+        // Sử dụng Remote gọi đến hàm kiểm tra xem có trùng với email đã đăng ký hay không, trả về validate bằng json
+        [Remote("IsEmailInUse","Account")]
         public string Email {get;set;}
         
         [Required]
