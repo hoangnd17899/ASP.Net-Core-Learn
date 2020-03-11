@@ -9,6 +9,8 @@ namespace EmployeeManagement
         [EmailAddress]
         // Sử dụng Remote gọi đến hàm kiểm tra xem có trùng với email đã đăng ký hay không, trả về validate bằng json
         [Remote("IsEmailInUse","Account")]
+        // Sử dụng custom validation
+        [ValidEmailDomain(allowDomain : "gmail.com",ErrorMessage="Email domain must be gmail.com")]
         public string Email {get;set;}
         
         [Required]
@@ -19,5 +21,7 @@ namespace EmployeeManagement
         [Display(Name="Confirm Password")]
         [Compare("Password",ErrorMessage="Do not match with Password")]
         public string ConfirmPassword { get; set; }
+
+        public string City { get; set; }
     }
 }

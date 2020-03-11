@@ -34,8 +34,8 @@ namespace EmployeeManagement
                 options.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            services.AddIdentity<IdentityUser,IdentityRole>(options=>{
-                options.Password.RequiredLength=10;
+            services.AddIdentity<ApplicationUser,IdentityRole>(options=>{
+                options.Password.RequiredLength=6;
                 options.Password.RequireUppercase=false;
                 options.Password.RequireNonAlphanumeric=false;
             }).AddEntityFrameworkStores<AppDBContext>();

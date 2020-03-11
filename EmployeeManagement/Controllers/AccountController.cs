@@ -9,11 +9,11 @@ namespace EmployeeManagement
     public class AccountController:Controller
     {
         // Quản lý các phương thức với tài khoản(CRUD)
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         // Quản lý đăng nhập
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public AccountController(UserManager<IdentityUser> _userManager,SignInManager<IdentityUser> _signInManager)
+        public AccountController(UserManager<ApplicationUser> _userManager,SignInManager<ApplicationUser> _signInManager)
         {
             userManager=_userManager;
             signInManager=_signInManager; 
@@ -29,9 +29,10 @@ namespace EmployeeManagement
         public async Task<IActionResult> Register(RegisterViewModel model){
             if(ModelState.IsValid){
                 // Tạo đối tượng Identity User
-                var user=new IdentityUser(){
+                var user=new ApplicationUser(){
                     Email=model.Email,
-                    UserName=model.Email
+                    UserName=model.Email,
+                    City=model.City
                 };
 
                 // Thêm mới IdentityUser
