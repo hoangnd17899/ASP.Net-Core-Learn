@@ -20551,6 +20551,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Administration/CreateRole.cshtml",
+      "TargetPath": "Views\\Administration\\CreateRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Account/Login.cshtml",
       "TargetPath": "Views\\Account\\Login.cshtml",
       "FileKind": "mvc"
