@@ -151,3 +151,6 @@
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/Login.cshtml.g.cs
 /home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/CreateRole.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/ListRole.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/EditRole.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/EditUsersInRole.cshtml.g.cs

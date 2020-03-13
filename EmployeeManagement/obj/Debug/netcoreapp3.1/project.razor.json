@@ -20536,6 +20536,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Administration/EditUsersInRole.cshtml",
+      "TargetPath": "Views\\Administration\\EditUsersInRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Administration/ListRole.cshtml",
+      "TargetPath": "Views\\Administration\\ListRole.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Account/Register.cshtml",
       "TargetPath": "Views\\Account\\Register.cshtml",
       "FileKind": "mvc"
@@ -20563,6 +20573,11 @@
     {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Shared/NotFound.cshtml",
       "TargetPath": "Views\\Shared\\NotFound.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Administration/EditRole.cshtml",
+      "TargetPath": "Views\\Administration\\EditRole.cshtml",
       "FileKind": "mvc"
     },
     {
