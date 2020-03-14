@@ -13,7 +13,7 @@ namespace EmployeeManagement
         private IEmployeeRepository _employeeRepository;
         private IWebHostEnvironment _iHostingEnvironment;
         private ILogger logger;
-
+            
         public HomeController(IEmployeeRepository employeeRepository,IWebHostEnvironment iHostingEnvironment,
                                 ILogger<HomeController> _logger)
         {

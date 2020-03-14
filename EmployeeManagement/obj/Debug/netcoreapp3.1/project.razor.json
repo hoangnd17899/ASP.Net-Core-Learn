@@ -20581,6 +20581,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Shared/AccessDenied.cshtml",
+      "TargetPath": "Views\\Shared\\AccessDenied.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -20598,6 +20603,11 @@
     {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Home/Edit.cshtml",
       "TargetPath": "Views\\Home\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/Views/Administration/ListUsers.cshtml",
+      "TargetPath": "Views\\Administration\\ListUsers.cshtml",
       "FileKind": "mvc"
     }
   ],
