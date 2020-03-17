@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {}
+    "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/EmployeeManagement.csproj": {}
   },
   "projects": {
-    "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj": {
+    "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/EmployeeManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
+        "projectUniqueName": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/EmployeeManagement.csproj",
         "projectName": "EmployeeManagement",
-        "projectPath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/EmployeeManagement.csproj",
+        "projectPath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/EmployeeManagement.csproj",
         "packagesPath": "/home/hoangnd/.nuget/packages/",
-        "outputPath": "/home/hoangnd/source/NetCore/NetCoreLearn/EmployeeManagement/obj/",
+        "outputPath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/hoangnd/.nuget/NuGet/NuGet.Config"
@@ -47,6 +47,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.2, )"
             },

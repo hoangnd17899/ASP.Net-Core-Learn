@@ -49,7 +49,7 @@ namespace EmployeeManagement
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddDbContext<AppDBContext>(
-                optionsAction => optionsAction.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
+                optionsAction => optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
         }
 
