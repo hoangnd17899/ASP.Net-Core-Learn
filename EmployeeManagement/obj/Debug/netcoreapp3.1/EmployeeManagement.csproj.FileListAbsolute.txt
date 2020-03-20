@@ -329,3 +329,5 @@
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Runtime.Caching.dll
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/EditUser.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/ManageUserRoles.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/ManageUserClaims.cshtml.g.cs

@@ -47,6 +47,12 @@ namespace EmployeeManagement
             //     options.Password.RequireNonAlphanumeric=false;
             // });
 
+            // Thêm Claim sử dụng cho Authorize
+            services.AddAuthorization(configure=>{
+                configure.AddPolicy("DeleteRolePolicy",policy=>policy.RequireClaim("Delete Role"));
+                configure.AddPolicy("EditRolePolicy",policy=>policy.RequireClaim("Edit Role"));
+            });
+
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddDbContext<AppDBContext>(
                 optionsAction => optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
