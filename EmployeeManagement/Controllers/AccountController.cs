@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Security.Claims;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement
 {
@@ -14,11 +15,14 @@ namespace EmployeeManagement
         private readonly UserManager<ApplicationUser> userManager;
         // Quản lý đăng nhập
         private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly ILogger<AdministrationController> logger;
 
-        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager)
+        public AccountController(UserManager<ApplicationUser> _userManager, SignInManager<ApplicationUser> _signInManager,
+            ILogger<AdministrationController> logger)
         {
             userManager = _userManager;
             signInManager = _signInManager;
+            this.logger = logger;
         }
 
         [HttpGet]
@@ -48,12 +52,24 @@ namespace EmployeeManagement
                 // Kiểm tra thêm mới thành công
                 if (result.Succeeded)
                 {
-                    // Đăng nhập cho tài khoản vừa đăng ký nếu chưa đăng nhập bất cứ tài khoản nào thuộc Admin
-                    if (!(signInManager.IsSignedIn(User) && User.IsInRole("Admin")))
+                    // Tạo link confirm
+                    var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                        new { userId = user.Id, token = token }, Request.Scheme);
+                    logger.LogWarning(confirmationLink);
+
+
+                    // Kiểm tra nếu đăng ký tài khoản mới bằng tài khoản admin thì trả về listUsers
+                    if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
-                        await signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("ListUsers", "Administration");
                     }
-                    return RedirectToAction("Index", "Home");
+
+                    // Hiển thị thông báo tạo thành công và yêu cầu confirm email
+                    ViewBag.ErrorTitle = "Registration successful";
+                    ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                            "email, by clicking on the confirmation link we have emailed you";
+                    return View("Error");
                 }
 
                 foreach (var error in result.Errors)
@@ -63,6 +79,37 @@ namespace EmployeeManagement
             }
 
             return View();
+        }
+
+        /// <summary>
+        /// Hàm confirm email
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("index", "home");
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"The User ID {userId} is invalid";
+                return View("NotFound");
+            }
+
+            var result = await userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
+            {
+                return View();
+            }
+
+            ViewBag.ErrorTitle = "Email cannot be confirmed";
+            return View("Error");
         }
 
         [HttpPost]
@@ -90,8 +137,18 @@ namespace EmployeeManagement
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            model.ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
+                // Kiểm tra email của tài khoản đã được xác nhận hay chưa
+                var user = await userManager.FindByEmailAsync(model.Email);
+                if (user.EmailConfirmed == false)
+                {
+                    ModelState.AddModelError("", "Email not confirmed yet");
+                    return View(model);
+                }
+
                 // Đăng nhập
                 // isPersistent để thực hiện lưu thông tin đăng nhập persistent cookie
                 var result = await signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
@@ -111,7 +168,7 @@ namespace EmployeeManagement
 
                 ModelState.AddModelError("", "Invalid Login Attempt");
             }
-            return View();
+            return View(model);
         }
 
         /// <summary>
@@ -152,12 +209,18 @@ namespace EmployeeManagement
         {
             var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { returnUrl = returnUrl });
             var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
-            return new ChallengeResult(provider, properties);
+            try
+            {
+                return new ChallengeResult(provider, properties);
+            }
+            catch (System.Exception)
+            {
+                return View("Login");
+            }
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult>
-            ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
 
@@ -191,6 +254,21 @@ namespace EmployeeManagement
             var signInResult = await signInManager.ExternalLoginSignInAsync(info.LoginProvider,
                 info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
 
+            // Get the email claim value
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            // Check email confirm
+            ApplicationUser user = null;
+            if (email != null)
+            {
+                user = await userManager.FindByEmailAsync(email);
+
+                if (user != null && user.EmailConfirmed == false)
+                {
+                    ModelState.AddModelError("", "Email not confirmed yet");
+                    return View("login", loginViewModel);
+                }
+            }
+
             if (signInResult.Succeeded)
             {
                 return LocalRedirect(returnUrl);
@@ -199,14 +277,8 @@ namespace EmployeeManagement
             // a local account
             else
             {
-                // Get the email claim value
-                var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-
                 if (email != null)
                 {
-                    // Create a new user without password if we do not have a user already
-                    var user = await userManager.FindByEmailAsync(email);
-
                     if (user == null)
                     {
                         user = new ApplicationUser
@@ -216,6 +288,18 @@ namespace EmployeeManagement
                         };
 
                         await userManager.CreateAsync(user);
+
+                        // Tạo link confirm
+                        var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+                        var confirmationLink = Url.Action("ConfirmEmail", "Account",
+                            new { userId = user.Id, token = token }, Request.Scheme);
+                        logger.LogWarning(confirmationLink);
+
+                        // Hiển thị thông báo tạo thành công và yêu cầu confirm email
+                        ViewBag.ErrorTitle = "Registration successful";
+                        ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                                "email, by clicking on the confirmation link we have emailed you";
+                        return View("Error");
                     }
 
                     // Add a login (i.e insert a row for the user in AspNetUserLogins table)
@@ -228,8 +312,7 @@ namespace EmployeeManagement
                 // If we cannot find the user email we cannot continue
                 ViewBag.ErrorTitle = $"Email claim not received from: {info.LoginProvider}";
                 ViewBag.ErrorMessage = "Please contact support on Pragim@PragimTech.com";
-
-                return View("Error");
+                return LocalRedirect("/Account/Login");
             }
         }
     }

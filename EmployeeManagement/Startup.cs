@@ -38,7 +38,11 @@ namespace EmployeeManagement
                 options.Password.RequiredLength=6;
                 options.Password.RequireUppercase=false;
                 options.Password.RequireNonAlphanumeric=false;
-            }).AddEntityFrameworkStores<AppDBContext>();
+                // Kiểm tra email của tài khoản đã confirm hay chưa
+                options.SignIn.RequireConfirmedEmail=true;
+            })
+            .AddEntityFrameworkStores<AppDBContext>()
+            .AddDefaultTokenProviders();
 
             // Thay đổi validation required cho IdentityUser
             // services.Configure<IdentityOptions>(options=>{
@@ -66,10 +70,17 @@ namespace EmployeeManagement
                 configure.AddPolicy("AdminPolicy",policy=>policy.RequireRole("Admin"));
             });
 
-            // Add service Google Authentication
-            services.AddAuthentication().AddGoogle(options=>{
+            // Add service Google và Facebook Authentication
+            services.AddAuthentication()
+            // Add Google
+            .AddGoogle(options=>{
                 options.ClientId="1043742852297-nvhj5d4hfmrhn7doicgpspb872hcf1i9.apps.googleusercontent.com";
                 options.ClientSecret="U8IstixU17Ql-v4NdUEyjDY5";
+            })
+            // Add Facebook  
+            .AddFacebook(options=>{
+                options.ClientId="219600535765265";
+                options.ClientSecret="995f98456ce1b40f20f89c25b513302e";
             });
 
             services.ConfigureApplicationCookie(opstions=>{
@@ -92,15 +103,13 @@ namespace EmployeeManagement
             if (env.IsDevelopment())
             {
                 // Trả về trang error mặc định của môi trường developement
-                // app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
 
                 // Trả về trang lỗi custom
                 // Bắt lỗi cụ thể
-                app.UseExceptionHandler("/Error");
+                //app.UseExceptionHandler("/Error");
                 // Bắt lỗi theo status code
-                app.UseStatusCodePagesWithReExecute("/Error/{0}");
-
-                app.UseHsts();
+                //app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {

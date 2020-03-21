@@ -20616,6 +20616,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Account/ConfirmEmail.cshtml",
+      "TargetPath": "Views\\Account\\ConfirmEmail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Shared/NotFound.cshtml",
       "TargetPath": "Views\\Shared\\NotFound.cshtml",
       "FileKind": "mvc"

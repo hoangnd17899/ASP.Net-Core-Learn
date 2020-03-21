@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.2": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
         "type": "package",
         "compile": {
@@ -2719,6 +2731,20 @@
     }
   },
   "libraries": {
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.2": {
+      "sha512": "FkC/CgnRkArFG/+az8fC0cJnJNezzVW6hIQjKuSS1i1Jr0Lm38lgtHlBt8tf9cPO4IBaA6CK3PBx5APTkic20w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.xml",
+        "microsoft.aspnetcore.authentication.facebook.3.1.2.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.facebook.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
       "sha512": "ziKXE4nTTgK1d1ZWkvc5YYjdarDhI3T59+JaWjq7E7x0sJxnbdi5G1togjmBlgE/lZN95esmVw2rkRSQxdEZmw==",
       "type": "package",
@@ -8786,6 +8812,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Microsoft.AspNetCore.Authentication.Facebook >= 3.1.2",
       "Microsoft.AspNetCore.Authentication.Google >= 3.1.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.2",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.2",
@@ -8832,6 +8859,10 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": {
+            "target": "Package",
+            "version": "[3.1.2, )"
+          },
           "Microsoft.AspNetCore.Authentication.Google": {
             "target": "Package",
             "version": "[3.1.2, )"

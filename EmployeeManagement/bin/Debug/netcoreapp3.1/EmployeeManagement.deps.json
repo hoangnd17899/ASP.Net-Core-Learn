@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "EmployeeManagement/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": "3.1.2",
           "Microsoft.AspNetCore.Authentication.Google": "3.1.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.2",
           "Microsoft.AspNetCore.Identity.UI": "3.1.2",
@@ -292,6 +293,17 @@
         },
         "compile": {
           "EmployeeManagement.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.2": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "3.1.2.0",
+            "fileVersion": "3.100.220.6801"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
@@ -3861,6 +3873,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FkC/CgnRkArFG/+az8fC0cJnJNezzVW6hIQjKuSS1i1Jr0Lm38lgtHlBt8tf9cPO4IBaA6CK3PBx5APTkic20w==",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.2",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.3.1.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
       "type": "package",

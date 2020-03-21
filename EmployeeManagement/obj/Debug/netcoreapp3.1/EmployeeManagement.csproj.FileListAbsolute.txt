@@ -333,3 +333,5 @@
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/EmployeeManagement.dll
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/EmployeeManagement.pdb
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ConfirmEmail.cshtml.g.cs
