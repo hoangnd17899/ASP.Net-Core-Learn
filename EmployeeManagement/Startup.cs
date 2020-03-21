@@ -21,7 +21,6 @@ namespace EmployeeManagement
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -67,6 +66,12 @@ namespace EmployeeManagement
                 configure.AddPolicy("AdminPolicy",policy=>policy.RequireRole("Admin"));
             });
 
+            // Add service Google Authentication
+            services.AddAuthentication().AddGoogle(options=>{
+                options.ClientId="1043742852297-nvhj5d4hfmrhn7doicgpspb872hcf1i9.apps.googleusercontent.com";
+                options.ClientSecret="U8IstixU17Ql-v4NdUEyjDY5";
+            });
+
             services.ConfigureApplicationCookie(opstions=>{
                 opstions.AccessDeniedPath=new PathString("/Administration/AccessDenied");
             });
@@ -94,6 +99,8 @@ namespace EmployeeManagement
                 app.UseExceptionHandler("/Error");
                 // Bắt lỗi theo status code
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+                app.UseHsts();
             }
             else
             {

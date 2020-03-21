@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "EmployeeManagement/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.2",
           "Microsoft.AspNetCore.Identity.UI": "3.1.2",
           "Microsoft.EntityFrameworkCore.Design": "3.1.2",
@@ -291,6 +292,17 @@
         },
         "compile": {
           "EmployeeManagement.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.2.0",
+            "fileVersion": "3.100.220.6801"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.2": {
@@ -3849,6 +3861,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ziKXE4nTTgK1d1ZWkvc5YYjdarDhI3T59+JaWjq7E7x0sJxnbdi5G1togjmBlgE/lZN95esmVw2rkRSQxdEZmw==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.2",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.2": {
       "type": "package",
