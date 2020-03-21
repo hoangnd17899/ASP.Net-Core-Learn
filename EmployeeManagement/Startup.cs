@@ -70,6 +70,12 @@ namespace EmployeeManagement
                 configure.AddPolicy("AdminPolicy",policy=>policy.RequireRole("Admin"));
             });
 
+
+            // Set thời hạn của token confirm email hay reset password là 5 tiếng
+            services.Configure<DataProtectionTokenProviderOptions>(options=>
+                options.TokenLifespan=TimeSpan.FromHours(5)
+            );
+
             // Add service Google và Facebook Authentication
             services.AddAuthentication()
             // Add Google
@@ -92,6 +98,9 @@ namespace EmployeeManagement
             services.AddSingleton<IAuthorizationHandler,CanEditOnlyOtherAdminRolesAndClaimsHandler>();
             // DI cho SuperAdminHandler
             services.AddSingleton<IAuthorizationHandler,SuperAdminHandler>();
+            // Tạo instance cho Protector Value
+            services.AddSingleton<DataProtectionPurposeStrings>();
+
             services.AddDbContext<AppDBContext>(
                 optionsAction => optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );

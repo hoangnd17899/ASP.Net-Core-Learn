@@ -335,3 +335,7 @@
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ConfirmEmail.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ForgotPassword.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ForgotPasswordConfirmation.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPassword.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPasswordConfirmation.cshtml.g.cs

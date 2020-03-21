@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
+using System.Linq;
 
 namespace EmployeeManagement
 {
@@ -13,24 +15,32 @@ namespace EmployeeManagement
         private IEmployeeRepository _employeeRepository;
         private IWebHostEnvironment _iHostingEnvironment;
         private ILogger logger;
-            
+        private IDataProtector protector;
+
         public HomeController(IEmployeeRepository employeeRepository,IWebHostEnvironment iHostingEnvironment,
-                                ILogger<HomeController> _logger)
+            ILogger<HomeController> _logger,IDataProtectionProvider dataProtectionProvider,DataProtectionPurposeStrings dataProtectionPurposeStrings)
         {
              logger=_logger;
             _employeeRepository = employeeRepository;
             _iHostingEnvironment = iHostingEnvironment;
+            // Tạo protector để mã hóa và giải mã
+            protector=dataProtectionProvider.CreateProtector(dataProtectionPurposeStrings.EmployeeIdRouteValue);
         }
 
         [AllowAnonymous]
         public ViewResult Index()
         {
-            var model = _employeeRepository.GetAllEmployee();
+            // Mã hóa id và gán vào encryptedId
+            var model = _employeeRepository.GetAllEmployee()
+                .Select(e=>{
+                    e.EncryptedId=protector.Protect(e.Id.ToString());
+                    return e;
+                });
             return View(model);
         }
 
         [AllowAnonymous]
-        public ViewResult Details(int? id)
+        public ViewResult Details(string? encryptedId)
         {
             //throw new Exception("Exeption from details");
             logger.LogTrace("Trace log");
@@ -40,11 +50,13 @@ namespace EmployeeManagement
             logger.LogError("Error log");
             logger.LogCritical("Critial log");
 
-            Employee employee = _employeeRepository.GetEmployee(id ?? 1);
+            // Giải mã encryptedId thành id để tìm kiếm trong database
+            int id =encryptedId!=null?Int32.Parse(protector.Unprotect(encryptedId)) : 1;
+            Employee employee = _employeeRepository.GetEmployee(id);
 
             if(employee==null){
                 Response.StatusCode = 404;
-                return View("EmployeeNotFound",id.Value);
+                return View("EmployeeNotFound",id);
             }
             HomeDetailViewModel homeDetailViewModel = new HomeDetailViewModel()
             {

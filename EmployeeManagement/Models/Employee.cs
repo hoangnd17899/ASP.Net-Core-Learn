@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -6,6 +7,8 @@ namespace EmployeeManagement
     public class Employee
     {
         public int Id { get; set; }
+        [NotMappedAttribute]
+        public string EncryptedId { get; set; }
         [Required]
         [MaxLength(30,ErrorMessage="Name cannot exceed 50 characters")]
         public string Name { get; set; }

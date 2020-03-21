@@ -20576,6 +20576,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Account/ResetPassword.cshtml",
+      "TargetPath": "Views\\Account\\ResetPassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -20583,6 +20588,11 @@
     {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Home/Create.cshtml",
       "TargetPath": "Views\\Home\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Account/ForgotPassword.cshtml",
+      "TargetPath": "Views\\Account\\ForgotPassword.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20598,6 +20608,11 @@
     {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Administration/AccessDenied.cshtml",
       "TargetPath": "Views\\Administration\\AccessDenied.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Account/ForgotPasswordConfirmation.cshtml",
+      "TargetPath": "Views\\Account\\ForgotPasswordConfirmation.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20623,6 +20638,11 @@
     {
       "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Shared/NotFound.cshtml",
       "TargetPath": "Views\\Shared\\NotFound.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/Views/Account/ResetPasswordConfirmation.cshtml",
+      "TargetPath": "Views\\Account\\ResetPasswordConfirmation.cshtml",
       "FileKind": "mvc"
     },
     {
