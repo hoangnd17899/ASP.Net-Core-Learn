@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace EmployeeManagement
 {
@@ -49,11 +50,32 @@ namespace EmployeeManagement
 
             // Thêm Claim sử dụng cho Authorize
             services.AddAuthorization(configure=>{
-                configure.AddPolicy("DeleteRolePolicy",policy=>policy.RequireClaim("Delete Role"));
-                configure.AddPolicy("EditRolePolicy",policy=>policy.RequireClaim("Edit Role"));
+                configure.AddPolicy("DeleteRolePolicy",policy=>policy.RequireClaim("Delete Role","true"));
+                // Add policy với 2 trường hợp
+                // configure.AddPolicy("EditRolePolicy",policy=>policy.RequireAssertion(context=>
+                //     // Điều kiện là thuộc Admin và chứa claim Edit Role
+                //     context.User.IsInRole("Admin") && context.User.HasClaim(x=>x.Type=="Edit Role" && x.Value=="true") ||
+                //     // Điều kiện là thuộc Super Admin
+                //     context.User.IsInRole("Super Admin")
+                // ));
+
+                // Sử dụng Custom Authorization Requirement and Handler
+                configure.AddPolicy("EditRolePolicy",policy=>
+                    policy.AddRequirements(new ManageAdminRolesAndClaimsRequirement())
+                );
+
+                configure.AddPolicy("AdminPolicy",policy=>policy.RequireRole("Admin"));
+            });
+
+            services.ConfigureApplicationCookie(opstions=>{
+                opstions.AccessDeniedPath=new PathString("/Administration/AccessDenied");
             });
 
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+            // DI cho CanEditOnlyOtherAdminRolesAndClaimsHandler
+            services.AddSingleton<IAuthorizationHandler,CanEditOnlyOtherAdminRolesAndClaimsHandler>();
+            // DI cho SuperAdminHandler
+            services.AddSingleton<IAuthorizationHandler,SuperAdminHandler>();
             services.AddDbContext<AppDBContext>(
                 optionsAction => optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
@@ -80,6 +102,7 @@ namespace EmployeeManagement
                 // app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseAuthentication();

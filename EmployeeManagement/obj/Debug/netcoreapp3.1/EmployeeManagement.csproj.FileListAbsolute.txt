@@ -331,3 +331,4 @@
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/EditUser.cshtml.g.cs
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/ManageUserRoles.cshtml.g.cs
 /home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/ManageUserClaims.cshtml.g.cs
+/home/hoangnd/source/NetCore/NetCoreLearn (copy)/EmployeeManagement/obj/Debug/netcoreapp3.1/Razor/Views/Administration/AccessDenied.cshtml.g.cs
